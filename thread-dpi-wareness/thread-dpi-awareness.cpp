@@ -120,7 +120,7 @@ CMainWindow::CMainWindow()
 {
 	
 	DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE);
-	DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_SYSTEM_AWARE);
+	//DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_SYSTEM_AWARE);
 
 	if (old_dpi_ctx == NULL)
 	{
