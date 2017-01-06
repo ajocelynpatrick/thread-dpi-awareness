@@ -119,13 +119,33 @@ void PrintDPIAwrenessString(DPI_AWARENESS_CONTEXT ctx)
 CMainWindow::CMainWindow()
 {
 	
-	DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE);
+	//DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE);
 	//DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_SYSTEM_AWARE);
+	DPI_AWARENESS_CONTEXT old_dpi_ctx = SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_UNAWARE);
 
 	if (old_dpi_ctx == NULL)
 	{
 		TRACE("Error setting thread DPI wareness context\n");
 	}
+
+	//HRESULT res = SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
+	//HRESULT res = SetProcessDpiAwareness(PROCESS_SYSTEM_DPI_AWARE);
+	
+	/*switch (res)
+	{
+	case S_OK:
+		TRACE("Process dpi awareness set\n");
+		break;
+	case E_INVALIDARG:
+		TRACE("Error setting process DPI awareness - INVALID argument\n");
+		break;
+	case E_ACCESSDENIED:
+		TRACE("Error setting process DPI awareness - E_ACCESSDENIED\n");
+		break;
+	default:
+		break;
+	}*/
+
 	DPI_AWARENESS_CONTEXT ctx = GetThreadDpiAwarenessContext();
 	
 	TRACE("\n-> old DPI ctx:"); PrintDPIAwrenessString(old_dpi_ctx);
